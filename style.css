@@ -1,0 +1,645 @@
+/* =========================
+   PASSWORD SCREEN
+========================= */
+
+.password-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background:
+        radial-gradient(circle at top, #ffb6c9 0%, transparent 40%),
+        linear-gradient(135deg, #fff0f5, #ffd6e2);
+
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.password-screen.hide-password {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.password-box {
+    width: min(88%, 420px);
+    padding: 40px 25px;
+
+    text-align: center;
+
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 25px;
+
+    box-shadow:
+        0 15px 50px rgba(0, 0, 0, 0.15);
+
+    backdrop-filter: blur(10px);
+
+    animation: passwordBox 1s ease;
+}
+
+.password-box .big-heart {
+    font-size: 65px;
+    margin-bottom: 10px;
+
+    animation: heartBeat 1.5s infinite;
+}
+
+.password-box h1 {
+    margin: 8px 0;
+
+    font-size: 42px;
+
+    color: #d6336c;
+}
+
+.password-box .from {
+    margin-bottom: 5px;
+    font-size: 17px;
+}
+
+.password-box .for {
+    margin-bottom: 25px;
+    color: #777;
+}
+
+.password-box input {
+    width: 85%;
+    padding: 14px 16px;
+
+    border: 2px solid #f3b6c8;
+    border-radius: 30px;
+
+    outline: none;
+
+    text-align: center;
+    font-size: 16px;
+
+    background: white;
+
+    transition: 0.3s;
+}
+
+.password-box input:focus {
+    border-color: #d6336c;
+
+    box-shadow:
+        0 0 12px rgba(214, 51, 108, 0.2);
+}
+
+.password-box button {
+    margin-top: 18px;
+
+    padding: 14px 25px;
+
+    border: none;
+    border-radius: 30px;
+
+    background: linear-gradient(135deg,
+            #ff6b9a,
+            #d6336c);
+
+    color: white;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 20px rgba(214, 51, 108, 0.25);
+
+    transition: 0.3s;
+}
+
+.password-box button:hover {
+    transform: translateY(-3px);
+    box-shadow:
+        0 12px 25px rgba(214, 51, 108, 0.35);
+}
+
+.wrong {
+    display: none;
+
+    margin-top: 15px;
+
+    color: #d6336c;
+    font-size: 14px;
+}
+
+.wrong.show-wrong {
+    display: block;
+
+    animation: shake 0.4s ease;
+}
+
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes passwordBox {
+
+    from {
+        opacity: 0;
+        transform: scale(0.85) translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes heartBeat {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.12);
+    }
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-8px);
+    }
+
+    75% {
+        transform: translateX(8px);
+    }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    .password-box {
+        width: 82%;
+        padding: 35px 20px;
+    }
+
+    .password-box .big-heart {
+        font-size: 55px;
+    }
+
+    .password-box h1 {
+        font-size: 35px;
+    }
+
+    .password-box input {
+        width: 80%;
+    }
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    color: white;
+    background: #080008;
+}
+
+
+/* Background */
+
+.background {
+    position: fixed;
+    inset: 0;
+
+    background:
+        radial-gradient(circle at 20% 20%, #6d1748 0%, transparent 35%),
+        radial-gradient(circle at 80% 80%, #3b0a38 0%, transparent 35%),
+        linear-gradient(135deg, #080008, #190014, #080008);
+
+    z-index: -2;
+}
+
+
+/* Opening */
+
+.opening {
+    position: fixed;
+    inset: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    transition: 0.8s;
+    z-index: 10;
+}
+
+.opening.hide {
+    opacity: 0;
+    transform: scale(1.2);
+    pointer-events: none;
+}
+
+.opening-content {
+    padding: 40px;
+
+    width: 90%;
+    max-width: 550px;
+
+    border: 1px solid rgba(255, 255, 255, 0.15);
+
+    border-radius: 30px;
+
+    background: rgba(255, 255, 255, 0.06);
+
+    backdrop-filter: blur(15px);
+
+    box-shadow:
+        0 20px 70px rgba(0, 0, 0, 0.6);
+}
+
+
+.big-heart {
+    font-size: 75px;
+
+    animation: heartbeat 1.3s infinite;
+}
+
+
+.from {
+    margin-top: 15px;
+
+    color: #d7b7c9;
+
+    font-size: 16px;
+}
+
+
+.opening h1 {
+    margin: 8px 0;
+
+    font-size: 55px;
+
+    background: linear-gradient(90deg,
+            #ff5c9d,
+            #ffd1e2,
+            #ff5c9d);
+
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+
+.for {
+    color: #f4cddd;
+
+    margin-bottom: 30px;
+}
+
+
+button {
+    border: none;
+
+    padding: 15px 28px;
+
+    border-radius: 50px;
+
+    background: linear-gradient(90deg,
+            #ff3f8c,
+            #ff6ba7);
+
+    color: white;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 30px rgba(255, 63, 140, 0.35);
+
+    transition: 0.3s;
+}
+
+
+button:hover {
+    transform: translateY(-4px) scale(1.04);
+
+    box-shadow:
+        0 15px 40px rgba(255, 63, 140, 0.5);
+}
+
+
+/* Main */
+
+.main {
+    position: relative;
+
+    min-height: 100vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    padding: 25px;
+
+    opacity: 0;
+
+    transform: translateY(30px);
+
+    transition: 1s;
+
+    z-index: 2;
+}
+
+
+.main.show {
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+
+.date {
+    letter-spacing: 5px;
+
+    color: #cfaabd;
+
+    font-size: 14px;
+
+    margin-bottom: 20px;
+}
+
+
+.main h2 {
+    font-weight: normal;
+
+    color: #eac5d6;
+
+    font-size: 25px;
+}
+
+
+.main h1 {
+    margin: 5px 0 15px;
+
+    font-size: 65px;
+
+    background: linear-gradient(90deg,
+            #ff4f96,
+            #fff,
+            #ff4f96);
+
+    -webkit-background-clip: text;
+
+    color: transparent;
+}
+
+
+.line {
+    width: 90px;
+
+    height: 2px;
+
+    background: #ff4f96;
+
+    margin: 10px 0 30px;
+
+    box-shadow:
+        0 0 15px #ff4f96;
+}
+
+
+.love-message {
+    min-height: 40px;
+
+    font-size: 22px;
+
+    color: #ffe1ed;
+
+    margin-bottom: 35px;
+}
+
+
+.surprise-btn {
+    background: transparent;
+
+    border: 1px solid #ff5b9e;
+
+    box-shadow: none;
+}
+
+
+.surprise-btn:hover {
+    background: #ff4f96;
+}
+
+
+/* Secret */
+
+.secret {
+    display: none;
+
+    margin-top: 35px;
+
+    max-width: 500px;
+
+    padding: 30px;
+
+    border-radius: 25px;
+
+    background: rgba(255, 255, 255, 0.07);
+
+    border: 1px solid rgba(255, 255, 255, 0.15);
+
+    animation: appear 1s ease;
+}
+
+
+.secret.show-secret {
+    display: block;
+}
+
+
+.secret-heart {
+    font-size: 45px;
+
+    margin-bottom: 10px;
+}
+
+
+.secret h3 {
+    font-size: 30px;
+
+    margin-bottom: 15px;
+
+    color: #ff75aa;
+}
+
+
+.secret p {
+    line-height: 1.8;
+
+    color: #f3d9e4;
+}
+
+
+.secret span {
+    display: block;
+
+    margin-top: 20px;
+
+    color: #ff75aa;
+}
+
+
+/* Floating hearts */
+
+.floating-heart,
+.explosion-heart {
+    position: fixed;
+
+    bottom: -40px;
+
+    pointer-events: none;
+
+    z-index: 1;
+}
+
+
+.floating-heart {
+    font-size: 20px;
+
+    animation:
+        floatUp linear forwards;
+
+    opacity: 0.6;
+}
+
+
+.explosion-heart {
+    font-size: 25px;
+
+    animation:
+        explode linear forwards;
+}
+
+
+/* Animations */
+
+@keyframes heartbeat {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+
+@keyframes floatUp {
+
+    from {
+        transform:
+            translateY(0) rotate(0deg);
+
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0.8;
+    }
+
+    to {
+        transform:
+            translateY(-110vh) rotate(360deg);
+
+        opacity: 0;
+    }
+}
+
+
+@keyframes explode {
+
+    from {
+        transform:
+            translateY(0) scale(0.5);
+
+        opacity: 1;
+    }
+
+    to {
+        transform:
+            translateY(-100vh) translateX(100px) rotate(360deg) scale(1.5);
+
+        opacity: 0;
+    }
+}
+
+
+@keyframes appear {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(30px) scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0) scale(1);
+    }
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    .opening h1 {
+        font-size: 45px;
+    }
+
+    .main h1 {
+        font-size: 50px;
+    }
+
+    .love-message {
+        font-size: 18px;
+    }
+
+    .opening-content {
+        padding: 30px 20px;
+    }
+}

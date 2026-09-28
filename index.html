@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Malak ❤️</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Password Screen -->
+    <section class="password-screen" id="passwordScreen">
+        <div class="password-box">
+            <div class="big-heart">❤️</div>
+
+            <p class="from">A little surprise for</p>
+
+            <h1>Malak</h1>
+
+            <p class="for">Enter our special date 🔐</p>
+
+            <input type="password" id="password" placeholder="Enter password"
+                onkeydown="if(event.key === 'Enter') checkPassword()">
+
+            <button onclick="checkPassword()">
+                Open My Surprise 💌
+            </button>
+
+            <p class="wrong" id="wrong">
+                Wrong password ❤️ Try again.
+            </p>
+        </div>
+    </section>
+
+
+    <div class="background"></div>
+    <div class="hearts"></div>
+
+    <!-- Opening -->
+    <section class="opening" id="opening">
+        <div class="opening-content">
+            <div class="big-heart">❤️</div>
+
+            <p class="from">A little surprise from</p>
+
+            <h1>Mohamed</h1>
+
+            <p class="for">for my pretty princess</p>
+
+            <button onclick="openLetter()">
+                Open Your Surprise 💌
+            </button>
+        </div>
+    </section>
+
+
+    <!-- Main website -->
+    <main class="main" id="main">
+
+        <p class="date">14 • 08 • 2025</p>
+
+        <h2>For My Princess</h2>
+
+        <h1>Malak ❤️</h1>
+
+        <div class="line"></div>
+
+        <p class="love-message" id="message"></p>
+
+        <button class="surprise-btn" onclick="showSurprise()">
+            One More Thing... 🎁
+        </button>
+
+        <div class="secret" id="secret">
+            <div class="secret-heart">💗</div>
+
+            <h3>I Love You</h3>
+
+            <p>
+                You are one of the most beautiful parts
+                of my life, Malak.
+                <br><br>
+                Always remember that you are my
+                pretty princess. ❤️
+            </p>
+
+            <span>— Mohamed</span>
+        </div>
+
+    </main>
+
+
+    <script>
+
+        // Password
+        function checkPassword() {
+
+            const password =
+                document.getElementById("password").value;
+
+            if (password === "14/8/2025") {
+
+                document.getElementById("passwordScreen")
+                    .classList.add("hide-password");
+
+            } else {
+
+                document.getElementById("wrong")
+                    .classList.add("show-wrong");
+
+            }
+        }
+
+
+        function openLetter() {
+
+            document.getElementById("opening")
+                .classList.add("hide");
+
+            setTimeout(() => {
+
+                document.getElementById("main")
+                    .classList.add("show");
+
+                typeMessage();
+
+            }, 700);
+        }
+
+
+        const text =
+            "I love you my pretty princess ❤️";
+
+        let index = 0;
+
+        function typeMessage() {
+
+            const message =
+                document.getElementById("message");
+
+            if (index < text.length) {
+
+                message.innerHTML +=
+                    text.charAt(index);
+
+                index++;
+
+                setTimeout(typeMessage, 90);
+            }
+        }
+
+
+        function showSurprise() {
+
+            const secret =
+                document.getElementById("secret");
+
+            secret.classList.add("show-secret");
+
+            createExplosion();
+        }
+
+
+        function createExplosion() {
+
+            for (let i = 0; i < 30; i++) {
+
+                const heart =
+                    document.createElement("span");
+
+                heart.innerHTML =
+                    ["❤️", "💗", "💕", "✨"]
+                    [Math.floor(Math.random() * 4)];
+
+                heart.classList.add("explosion-heart");
+
+                heart.style.left =
+                    Math.random() * 100 + "vw";
+
+                heart.style.animationDuration =
+                    (2 + Math.random() * 3) + "s";
+
+                document.body.appendChild(heart);
+
+                setTimeout(() => {
+                    heart.remove();
+                }, 5000);
+            }
+        }
+
+
+        // Floating hearts
+        setInterval(() => {
+
+            const heart =
+                document.createElement("span");
+
+            heart.innerHTML = "❤️";
+
+            heart.classList.add("floating-heart");
+
+            heart.style.left =
+                Math.random() * 100 + "vw";
+
+            heart.style.animationDuration =
+                (4 + Math.random() * 5) + "s";
+
+            document.querySelector(".hearts")
+                .appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 9000);
+
+        }, 600);
+
+    </script>
+
+</body>
+
+</html>
